@@ -1,7 +1,5 @@
 import React from 'react';
 import department from '../data/department.json';
-// const data = department;
-// console.log(data);
 let optionList, categorykeys, arr = [];
     categorykeys = Object.keys(department);
 class DropDownList extends React.Component{
