@@ -1,41 +1,43 @@
 import React from 'react';
 import department from '../data/department.json';
-let optionList, categorykeys, arr = [];
+
+let optionList, categorykeys;
     categorykeys = Object.keys(department);
 class DropDownList extends React.Component{
     constructor(props){
         super(props);
-        // this.department = [];
-        // this.props.selectChange = change;
         this.state = {
             value: this.props.value,
-            option: this.props.option
+            text: 'HR'
         }
     }
-    handleChange = () => {
-        categorykeys.forEach((ele, index) => {
-            for(let i=0; i<categorykeys.length; i++){
-                arr = department[ele];
-                console.log(categorykeys[i]);
-                console.log(arr);
-                // <span key={index}>{ele}</span>
-                return true;
-            }
-        })
+    componentWillReceiveProps(nextProps){
+        if(nextProps.text !== this.state.text){
+            this.setState({
+                text: nextProps.text
+            })
+            console.log(nextProps.text);
+        }
     }
     render(){
         if((this.props.value) === 'Department'){
-            optionList = categorykeys.map((ele, index) => <option keys={index} value={index}>{ele}</option>)
+            optionList = categorykeys.map((ele, index) => <option keys={index} value={ele}>{ele}</option>)
+        }
+        else if((this.props.value) === 'Employee Ids'){
+            let element = this.state.text,
+            departmetKey = department[element];
+            console.log(departmetKey);
+           optionList = [...departmetKey].map((ele, index) => <option keys={index} value={ele.Id}>{ele.Id}</option>)
         }
         else {
-           optionList = (
+            optionList = (
                 null
             )
         }
         return (
             <div className="element">
                 <label value={this.props.value}>{this.props.value}</label>
-                    <select onChange={this.handleChange}>
+                    <select value={this.props.text} option={this.props.option} onChange={this.props.dropdownChange}>
                         {optionList}
                     </select>
             </div>
