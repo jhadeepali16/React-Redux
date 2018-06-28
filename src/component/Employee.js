@@ -14,21 +14,10 @@ class Employee extends React.Component{
     }
     
     handleChange = (e) => {
-        let department = data[0].department,
-            employeeId = data[1].employeeIds;
-        if(department){
-            let text = e.target.value;        
-            console.log(text);
-            console.log(data[0].department);
-            this.setState({text: text});
-        }
-        else if(employeeId) {
-            let option = e.target.value;
-            console.log(option);
-            console.log(data[1].employeeIds);
-            this.setState({option: option});
-        }
-        
+        let text = e.target.value;        
+        console.log(text);
+        console.log(data[0].department);
+        this.setState({text: text});   
     }
 
     // handleChange = (e) => {
