@@ -27,6 +27,16 @@
   to { transform: rotate(360deg); }
 }
 
+main {
+  border: 1px solid #333;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+.c-department-layout {
+  padding: 0 20px;
+}
+
 .department {
   display: flex;
   justify-content: space-between;
@@ -37,14 +47,35 @@
 }
 .department .element select{
   width: 200px;
+  border-radius: 5px;
+  padding: 5px 0;
 }
 .department .element label{
   text-align: left;
+  padding-bottom: 10px;
 }
 .department .element.cta{
   flex-direction: row;
-  align-self: center;
+  align-self: flex-end;
+}
+.department .element button {
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #333;
+  padding: 6px 15px;
 }
 .department .element.cta button:first-child {
   margin-right: 20px;
+}
+.c-department-layout .c-employee-detail {
+  padding: 30px 0;
+  width: 50%;
+  background: #ccc;
+  margin: 20px auto;
+}
+.c-employee-decsription {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 10px;
 }
