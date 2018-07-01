@@ -8,6 +8,7 @@ class EmployeeDetail extends React.Component{
             userId: '',
             requestFailed: false
         }
+        this.baseState = this.state;
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.userId !== this.state.userId){
@@ -35,6 +36,12 @@ class EmployeeDetail extends React.Component{
             })
         })
     }
+
+    reset = () => {
+        console.log("clear");
+        this.setState(this.baseState);
+    }
+
     render(){
         if (this.state.requestFailed) return <p>Failed!</p>
         if (!this.state.data) return <p>Loading...</p>
