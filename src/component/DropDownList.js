@@ -9,7 +9,7 @@ class DropDownList extends React.Component{
         this.function1 = 
         this.state = {
             value: this.props.value,
-            text: 'HR',
+            text: 'Select an Option',
             target: ''
         }
     }
@@ -18,17 +18,16 @@ class DropDownList extends React.Component{
             this.setState({
                 text: nextProps.text
             })
-            console.log(nextProps.text);
         }
     }
     displayOption = () => {
         if((this.props.value) === 'Department'){
-            optionList = categorykeys.map((ele, index) => <option keys={index} value={ele}>{ele}</option>)
+            optionList = categorykeys.map((ele, index) => <option keys={index.toString()} value={ele}>{ele}</option>)
         }
         else if((this.props.value) === 'Employee Ids'){
             let element = this.state.text,
             departmetKey = department[element];
-           optionList = [...departmetKey].map((ele, index) => <option keys={index} value={ele.Id}>{ele.Id}</option>)
+           optionList = [...departmetKey].map((ele, index) => <option keys={index.toString()} value={ele.Id}>{ele.Id}</option>)
         }
         else {
             optionList = (
@@ -38,7 +37,6 @@ class DropDownList extends React.Component{
     }
     render(){
         this.displayOption();
-        console.log(this.props.target);
         return (
             <div className="element">
                 <label value={this.props.value}>{this.props.value}</label>

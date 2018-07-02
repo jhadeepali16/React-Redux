@@ -7,10 +7,8 @@ class Employee extends React.Component{
     constructor(props){
         super(props);
         this.employeeData = React.createRef();
-        this.clearData = React.createRef();
         this.state = {
             label: 'Department',
-            data: '',
             text: '',
             option:'',
             target:''
@@ -33,12 +31,16 @@ class Employee extends React.Component{
         });
     }
 
-    getData = (e, option) => {
+    getData = () => {
         this.employeeData.current.fetchData();
     }
 
-    clear = () => {
-        this.clearData.current.reset();
+    remove = () => {
+        this.setState({
+            option: '',
+            text: 'Select an Option',
+            initialState:false
+        })
     }
 
     render(){
@@ -48,11 +50,11 @@ class Employee extends React.Component{
                     <DropDownList value={data[0].department} dropdownChange={this.handleChange} text={this.state.text} />
                     <DropDownList value={data[1].employeeIds} text={this.state.text} option={this.state.option} dropdownChange={this.handleSelectedOption} />
                     <div className="element cta">
-                        <button onClick={this.getData} userId={this.state.option}>Get Details</button>
-                        <button onClick={this.clear}>Clear</button>
+                        <button onClick={this.getData}>Get Details</button>
+                        <button onClick={this.remove}>Clear</button>
                     </div>
                 </section>
-                <EmployeeDetail ref={this.employeeData} userId={this.state.option} />
+                <EmployeeDetail initialState={this.state.initialState} ref={this.employeeData} userId={this.state.option} data={this.state.data} />
             </section>
         );
     }
