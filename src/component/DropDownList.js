@@ -6,7 +6,6 @@ let optionList, categorykeys;
 class DropDownList extends React.Component{
     constructor(props){
         super(props);
-        this.function1 = 
         this.state = {
             value: this.props.value,
             text: 'Select an Option',
@@ -37,6 +36,7 @@ class DropDownList extends React.Component{
     }
     render(){
         this.displayOption();
+        console.log(this.props.target);
         return (
             <div className="element">
                 <label value={this.props.value}>{this.props.value}</label>
