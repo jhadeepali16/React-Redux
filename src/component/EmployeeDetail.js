@@ -12,14 +12,14 @@ class EmployeeDetail extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps){
+        if(nextProps.initialState !== this.state.initialState){
+            this.setState({
+                initialState:nextProps.initialState
+            })
+        }
         if(nextProps.userId !== this.state.userId){
             this.setState({
                 userId: nextProps.userId
-            })
-        }
-        else if(nextProps.initialState !== this.state.initialState){
-            this.setState({
-                initialState:nextProps.initialState
             })
         }
     }
@@ -42,15 +42,6 @@ class EmployeeDetail extends React.Component{
                 requestFailed: true
             })
         })
-    }
-
-    remove = () => {
-        alert('s');
-        // this.setState({
-        //     userId: '',
-        //     data: ''
-        // })
-        // this.state(this.default);
     }
 
     render(){
